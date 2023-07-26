@@ -1,4 +1,4 @@
-import { Button } from "bootstrap";
+import Button from 'react-bootstrap/Button';
 import React from "react";
 import { useState } from "react";
 
@@ -19,7 +19,7 @@ const ItemCount = () => {
         <div>
             <div>
                 <Button onClick={restar}>-</Button>
-                <spam>{count}</spam>
+                <p>{count}</p>
                 <Button onClick={sumar}>+</Button>
             </div>
             <Button>Agregar al carrito</Button>

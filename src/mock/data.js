@@ -18,7 +18,7 @@ export const getProducts = () => {
         if (error) {
           reject ('No hay información, intente más tarde')
         } else {
-          resolve ('list')
+          resolve (list)
         }
       }, 2000)
     })
@@ -27,7 +27,7 @@ export const getProducts = () => {
 export const getItem = () => {
     return new Promise ((resolve) => {
         setTimeout (()=>{
-            resolve(list[2])
+            resolve(list)
         },2000)
     })
 }
