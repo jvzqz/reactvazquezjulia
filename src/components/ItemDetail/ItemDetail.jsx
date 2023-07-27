@@ -1,9 +1,10 @@
 import React from "react";
 import ItemCount from "../ItemCount/ItemCount";
 
+
 const ItemDetail = ({producto}) => {
-    const onAdd = (cantidad) => {
-        console.log ('Compraste {cantidad} de productos')
+    const onAdd = (count) => {
+        console.log ('Compraste {count} de productos')
     }
     return (
         <div>
