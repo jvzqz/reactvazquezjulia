@@ -13,12 +13,10 @@ const ItemListContainer = (props) => {
       .then((res)=> {
         if(category){res.filter((item)=> item.category === category)
         }else{
-          setProductos (res)}
+          setProductos(res)}
         })
-      .catch ((error)=> console.long (error))
-
-    },[category])
-    console.log (productos);
+      .catch ((error)=> console.log (error))
+    },[category]);
  
     return (
       <>

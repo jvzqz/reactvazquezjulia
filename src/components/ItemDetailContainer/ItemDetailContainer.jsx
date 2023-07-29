@@ -11,10 +11,10 @@ const ItemDetailContainer = () => {
     const [producto, setProducto] = useState ({})
 
     useEffect (() => {
-        getItem ()
+        getItem (id)
         .then ((res) => setProducto (res))
         .catch ((error) => console.log (error))
-    }, []) 
+    }, [id]) 
 
     return (
         <div>
