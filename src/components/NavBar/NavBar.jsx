@@ -12,10 +12,10 @@ const NavBar = () => {
           <Navbar.Brand as={NavLink} to='/'href="#home">Uva y cuajo - Eventos y vinos</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link as={NavLink} to='/'> Inicio </Nav.Link>
-            <Nav.Link as={NavLink} to='/category/malbec'>Malbec</Nav.Link>
             <Nav.Link as={NavLink} to='/category/tintos'>Tintos</Nav.Link>
-            <Nav.Link as={NavLink} to='/category/blancosrosados'>Blancos/Rosados</Nav.Link>
-            <CartWidget/>
+            <Nav.Link as={NavLink} to='/category/blancos'>Blancos</Nav.Link>
+            <Nav.Link as={NavLink} to='/category/rosados'>Rosados</Nav.Link>
+            <Nav.Link to='/cart'><CartWidget/></Nav.Link>
           </Nav>
         </Container>
       </Navbar>
