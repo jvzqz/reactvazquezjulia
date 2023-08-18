@@ -10,7 +10,7 @@ const Cart = () => {
     const {cart, clear, total} = useContext (CartContext);
     return(
         <div>
-            {cart.lenght
+            {cart.length
               ? <div>
                   <div>
                     {cart.map ((item)=> <CartItem key={item.id} item={item}/>)}
