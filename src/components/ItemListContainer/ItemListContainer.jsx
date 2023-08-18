@@ -8,14 +8,15 @@ const ItemListContainer = (props) => {
    const [productos, setProductos] = useState ([])
    const {category}= useParams()
     
-    useEffect (()=> {
-      getProducts ()
-      .then((res)=> {
-        if(category){res.filter((item)=> item.category === category)
-        }else{
-          setProductos(res)}
-        })
-      .catch ((error)=> console.log (error))
+   useEffect (()=> {
+    getProducts ()
+    .then((res)=> {
+      if(category){
+     setProductos(res.filter((item)=> item.category === category))
+      }else{
+        setProductos(res)}
+      })
+    .catch ((error)=> console.log (error))
     },[category]);
  
     return (

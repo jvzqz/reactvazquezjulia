@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import CartItem from "../CartItem/CartItem";
 
 
 const Cart = () => {
@@ -10,6 +12,14 @@ const Cart = () => {
         <div>
             {cart.lenght
               ? <div>
+                  <div>
+                    {cart.map ((item)=> <CartItem key={item.id} item={item}/>)}
+                    <p>Total a pagar: ${total()}</p>
+                  </div>
+                  <div>
+                    <Button onClick={clear()}>Vaciar Carrito</Button>
+                    <Link>Terminar compra</Link>
+                  </div>
               </div>
               :<div>
                    <h3>Tu carrito está vacío.</h3>
