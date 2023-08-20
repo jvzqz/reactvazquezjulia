@@ -34,7 +34,7 @@ const cartQuantity = () => {
 }
 
 const total = () => {
-  return cart.reduce((acc, item)=> acc + item.quantity + item.price, 0);
+  return cart.reduce((acc, item)=> acc + item.quantity * parseInt(item.price), 0);
 }
 
 console.log(cart, 'carrito');
