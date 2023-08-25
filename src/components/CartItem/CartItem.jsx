@@ -4,7 +4,8 @@ import { CartContext } from "../../context/CartContext";
 
 const CartItem = ({item}) => {
 
-    const {deleteItem} = useContext(CartContext)
+    const {deleteItem} = useContext(CartContext);
+    console.log (item);
 
     return (
         <div>
@@ -18,5 +19,8 @@ const CartItem = ({item}) => {
     )
 
 }
+
+console.log (CartItem);
+
 
 export default CartItem; 

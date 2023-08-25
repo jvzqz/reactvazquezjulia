@@ -11,17 +11,6 @@ const ItemListContainer = (props) => {
    const [productos, setProductos] = useState ([])
    const {category}= useParams()
     
-  /* useEffect (()=> {
-    getProducts ()
-    .then((res)=> {
-      if(category){
-     setProductos(res.filter((item)=> item.category === category))
-      }else{
-        setProductos(res)}
-      })
-    .catch ((error)=> console.log (error))
-    },[category]);*/
-
     useEffect (()=> {
       const coleccionProductos = category ? query (collection(db, "productos"), where("category", "==", category)):collection(db, "productos")
       getDocs (coleccionProductos)
@@ -40,7 +29,7 @@ const ItemListContainer = (props) => {
  
     return (
       <>
-        <h1>{props.greeting} <span>{category && category}</span></h1>
+        <h1>{props.greeting} <span>  {category && category}</span></h1>
         <ItemList productos={productos}/>  
       </>
     )

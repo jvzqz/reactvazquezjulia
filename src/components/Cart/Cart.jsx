@@ -7,6 +7,7 @@ import CartItem from "../CartItem/CartItem";
 const Cart = () => {
     
     const {cart, clear, total} = useContext (CartContext);
+    
     return(
         <div>
             {cart.length
@@ -30,4 +31,8 @@ const Cart = () => {
     )
 }
 
+console.log (Cart);
+
+
 export default Cart;
+
