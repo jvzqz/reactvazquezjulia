@@ -5,18 +5,11 @@ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCont
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import Cart from './components/Cart/Cart';
-import {list} from './mock/data';
-import { addDoc, collection } from 'firebase/firestore';
-import { db } from "./service/firebase";
 import Checkout from './components/Checkout/Checkout';
 
 
 function App() {
   
-  /*useEffect(()=>{
-    const collectionProducts = collection (db, 'productos') 
-    list.map((item)=> addDoc(collectionProducts, item))
-  },[])*/
 
   return (
     <CartProvider>

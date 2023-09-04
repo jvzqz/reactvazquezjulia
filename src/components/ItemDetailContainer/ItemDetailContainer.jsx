@@ -1,38 +1,42 @@
-import { useEffect, useReducer } from "react";
-import React from "react";
-import { getItem } from "../../mock/data";
-import ItemDetail from "../ItemDetail/ItemDetail";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { db } from "../../service/firebase"
+import { db } from "../../service/firebase";
 import { collection, doc, getDoc } from "firebase/firestore";
-import { useState } from "react";
+import ItemDetail from "../ItemDetail/ItemDetail";
 
 const ItemDetailContainer = () => {
+    const { id } = useParams();
+    const [producto, setProducto] = useState(null);
 
-    const {id} = useParams ();
+    useEffect(() => {
+        const fetchProduct = async () => {
+            const collectionProd = collection(db, 'productos');
+            const refAlDoc = doc(collectionProd, id);
+            
+            try {
+                const docSnapshot = await getDoc(refAlDoc);
+                if (docSnapshot.exists()) {
+                    const productData = docSnapshot.data();
+                    setProducto({
+                        id:id,
+                        ...productData
+                      });
+                } else {
+                    console.log("No such document!");
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        };
 
-    const [producto, setProducto] = useState ('');
-
-    useEffect (() => {
-        const collectionProd = collection (db, 'productos')
-        const refAlDoc = doc(collectionProd, id)
-        getDoc (refAlDoc)
-        .then ((res) => setProducto (res))
-        .catch ((error) => console.log (error))
-    }, [])
-
-        /*useEffect (() => {
-        getItem (id)
-        .then ((res) => setProducto (res))
-        .catch ((error) => console.log (error))
-    }, [id]) */
-
+        fetchProduct();
+    }, [id]);
 
     return (
         <div>
-           <ItemDetail producto={producto}/>
+            {producto && <ItemDetail producto={producto} />}
         </div>
-    )
-}
+    );
+};
 
-export default ItemDetailContainer
+export default ItemDetailContainer;

@@ -13,8 +13,7 @@ const ItemDetail = (props) => {
     }
     
     const { name, description, price, stock, img, id } = props.producto;
-
-    
+   
     const onAdd = (count) => {
         let item = { name, description, price, stock, img, id };
         addItem(item, count);

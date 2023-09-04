@@ -7,10 +7,14 @@ import { CartContext } from "../../context/CartContext";
 
 const Checkout = () => {
     
-    const [user, setUser]= useState({})
-    const [valiteEmail, setValidateEmail] = useState('')
+    const [user, setUser]= useState({
+        name:'',
+        phone:'',
+        email:'',
+    });
+    const [valiteEmail, setValidateEmail] = useState('');
     const {cart, total, clear} = useContext(CartContext);
-    const [orderId, setOrderId] = useState('')
+    const [orderId, setOrderId] = useState('');
 
     const datosComprador = (e) => {
        setUser({
@@ -19,11 +23,11 @@ const Checkout = () => {
        })
     }
 
-    console.log (user)
+        console.log (user)
 
-    const finalizarCompra = (e) => {
+        const finalizarCompra = (e) => {
         e.preventDefault()
-        if (!user.name && !user.phone){
+        if (!user.name && !user.phone && !user.email){
             alert ('Campos incompletos')
         }else{
             let order = {
@@ -33,6 +37,7 @@ const Checkout = () => {
                 date:serverTimestamp, 
 
             }
+
             const venta = collection(db, "orders")
             addDoc(venta,order)
             .then((res)=>{
@@ -56,15 +61,15 @@ const Checkout = () => {
                <form onSubmit={finalizarCompra}>
                    <div className='mb-3'>
                        <label className='form-label'> Nombre y apellido:  </label>
-                       <input onChange={datosComprador} className='form-control' type='text' placeholder='Nombre y Apellido' name='name'/>
+                       <input onChange={datosComprador} value ={user.name} className='form-control' type='text' placeholder='Nombre y Apellido' name='name'/>
                     </div>
                     <div className='mb-3'>
                        <label className='form-label'> Ingrese su número de teléfono: </label>
-                       <input className='form-control' type='number' placeholder='Sin guiones' name='phone'/>
+                       <input onChange={datosComprador} value ={user.phone} className='form-control' type='number' placeholder='Sin guiones' name='phone'/>
                     </div>
                     <div className='mb-3'>
                        <label className='form-label'> Ingrese mail: </label>
-                       <input className='form-control' type='email' placeholder='xxxxxxx@xxx.com' name='mail'/>
+                       <input onChange={datosComprador} value ={user.mail} className='form-control' type='email' placeholder='xxxxxxx@xxx.com' name='mail'/>
                     </div>
                     <div className='mb-3'>
                        <label className='form-label'> Repita su mail: </label>
